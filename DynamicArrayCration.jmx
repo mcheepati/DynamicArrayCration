@@ -48,8 +48,8 @@
         <hashTree>
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-            <stringProp name="RegexExtractor.refname">global_property_id</stringProp>
-            <stringProp name="RegexExtractor.regex">&quot;global_property_id&quot;: &quot;([^&quot;]+)&quot;}</stringProp>
+            <stringProp name="RegexExtractor.refname">request_id</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;request_id&quot;: &quot;([^&quot;]+)&quot;}</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">-1</stringProp>
@@ -59,12 +59,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post  Dynamic value array " enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="global_property_ids_array" elementType="HTTPArgument">
+              <elementProp name="request_ids_array" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">[${arrayOutPut}]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">global_property_ids_array</stringProp>
+                <stringProp name="Argument.name">request_ids_array</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -89,11 +89,11 @@
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="script">int count = Integer.parseInt(vars.get(&quot;global_property_id_matchNr&quot;));
+            <stringProp name="script">int count = Integer.parseInt(vars.get(&quot;request_id_matchNr&quot;));
 String delimiter = &quot;,&quot;;
 StringBuffer sb = new StringBuffer();
 for(int i=1;i&lt;=count;i++) { 
- sb.append(vars.get(&quot;global_property_id_&quot; + i));
+ sb.append(vars.get(&quot;request_id_&quot; + i));
  if (i == count){
  break; //to eliminate comma after the array
  }else {
@@ -106,6 +106,35 @@ for(int i=1;i&lt;=count;i++) {
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>2</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <url>true</url>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
           <objProp>
             <value class="SampleSaveConfiguration">
               <time>true</time>
